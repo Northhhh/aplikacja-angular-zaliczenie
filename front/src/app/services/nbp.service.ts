@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { firstValueFrom, Observable } from 'rxjs';
-import { getNBPApiUrl } from "../../helpers/getNBPApiUrl";
+import { Observable } from 'rxjs';
+import { NbpApiUrl } from "../../helpers/NbpApiUrl";
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
-})
+})  
 export class NbpService {
   constructor(private http: HttpClient, private router: Router) { }
 
   fetchRates(curr: string, start: string, end: string): Observable<any> {
-    const url = `${getNBPApiUrl(curr)}/${start}/${end}/?format=json`;
+    const url = `${NbpApiUrl(curr)}/${start}/${end}/?format=json`;
     return this.http.get<any>(url);
   }
 
@@ -33,8 +33,6 @@ export class NbpService {
       }));
 
       this.addToDB(rates).subscribe((response) => {
-        //return firstValueFrom(response);
-
         if (url) {
           this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true })
             .then(() => {

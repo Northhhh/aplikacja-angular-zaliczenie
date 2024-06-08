@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NbpService } from '../services/nbp.service';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common';
 export class ExchangeComponent implements OnInit {
   public currency: any;
   rates: any;
-  daily: any;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
