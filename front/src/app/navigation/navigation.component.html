@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-between w-100">
+    <div class="btn-group">
+        <a *ngFor="let c of currencies" routerLink="/exchange/{{c}}" [ngClass]="{'active': currency === c, 'btn btn-outline-primary': true}">{{ c }}</a>
+    </div>
+    <button (click)="syncRates()" class="btn btn-primary">Synchronize</button>
+</div>

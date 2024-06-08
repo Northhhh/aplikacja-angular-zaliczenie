@@ -1,13 +1,22 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { NbpService } from './services/nbp.service';
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {availableCurrencies} from "../consts/availableCurrencies";
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule, NavigationComponent],
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'front';
+  title = "";
+
+  isError = false;
+
+  constructor(private service: NbpService) { }
 }
